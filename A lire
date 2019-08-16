@@ -1,0 +1,85 @@
+LISTE DES COMMANDE EXÉCUTER SUR LE PROJET
+creation du projet
+0-composer create-project symfony/skeleton api
+voici la liste des composant a installer avant d'éxécuter le projet
+1-composer require server
+2-composer require profiler
+3-composer require orm
+4-composer require maker
+5-composer require serializer
+6-composer require annotations
+7-composer require validator
+8-composer require api make
+10-composer require migrations
+11-composer require symfony/form
+12-composer require orm-fixtures --dev 
+/* ÇA C'EST POUR L'AUTHENTIFICATION  */
+9-composer require lexik/jwt-authentication-bundle
+10-mkdir -p config/jwt
+/* UN MOT DE PASSE TE SERAS DEMANDER TU PEUT METTRE CE QUE TU VEUX 
+MAIS A LA FIN VAS DANS LE FICHIER ENV ET MAIS ÇA
+JWT_PASSPHRASE=ton mot de passe
+qui se trouve en bas de ces éléments
+JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
+JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
+*/
+11-openssl genrsa -out config/jwt/private.pem -aes256 4096
+12-openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+		FIN
+LES TESTS SUR POSTMAN
+	POUR SE LOGER route /auth/login_check
+{
+	"username":"",
+	"password":""
+}
+	POUR SYSTEME route /systeme/ajoutsysteme
+{
+	"prenom":"",
+	"nom":"",
+	"telephone": ,
+	"username":"",
+	"password":""
+}
+	POUR CAISSIER SYSTEME /systeme/ajoutcaissier
+{
+	"prenom":"",
+	"nom":"",
+	"telephone": ,
+	"username":"",
+	"password":""
+}
+	POUR PRESTATAIRE route /systeme/ajoutprestataire
+{
+	"nomentreprise":"yobale service",
+	"ninea":"1994alpsy",
+	"adresse":"gdw",
+	"email":"gdw@yahoo.fr",
+    "numregistre":"22111994" ,
+	"telephone":774457219 ,
+	"statutsocial":"ACTIF"
+}
+	POUR TRANSACTION route /systeme/trans
+{
+	"montant": ,
+	"prestataire": ,
+	"systeme": ,
+}
+
+
+  php bin/console make:crud
+  php bin/console generate:doctrine:crud
+  php bin/console make:fixtures
+./bin/console doctrine:fixtures:load
+./bin/console make:controller
+./bin/console make:entity
+./bin/console doctrine:database:create
+./bin/console make:migration
+./bin/console doctrine:migrations:migrate
+
+POUR LE GIT
+git add .
+git commit -m ""
+git remote add zz 
+git pull
+git push -u zz master
+git pull
